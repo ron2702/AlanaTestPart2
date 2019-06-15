@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title class="customTitle">Tus Datos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form>
+    <ion-list>
+        <div>
+          <ion-item>
+              <ion-label floating>Nombre</ion-label>
+              <ion-input type="text"></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item>
+              <ion-label floating>Apellido</ion-label>
+              <ion-input type="text"></ion-input>
+          </ion-item>
+        </div>
+        <div class="customDiv">
+          <ion-item>
+              <ion-label>Sexo</ion-label>
+              <ion-select>
+                <ion-option value="35">Hombre</ion-option>
+                <ion-option value="36">Mujer</ion-option>
+                <ion-option value="37">Otros</ion-option>
+              </ion-select>
+            </ion-item>
+        </div>
+        <div class="customDiv">
+          <ion-item>
+              <ion-label>Fecha de Nacimiento</ion-label>
+              <ion-datetime displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
+          </ion-item>
+        </div>
+        <div text-center>
+          <button ion-button round full color="secondary">Siguiente</button>
+        </div>
+      </ion-list>
+  </form>
+</ion-content>
