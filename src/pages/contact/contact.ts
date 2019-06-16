@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {ContactPage} from '../contact/contact';
+import {ProfilePage} from '../profile/profile';
 
 /**
- * Generated class for the PersonalDataPage page.
+ * Generated class for the ContactPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +12,20 @@ import {ContactPage} from '../contact/contact';
 
 @IonicPage()
 @Component({
-  selector: 'page-personal-data',
-  templateUrl: 'personal-data.html',
+  selector: 'page-contact',
+  templateUrl: 'contact.html',
 })
-export class PersonalDataPage {
+export class ContactPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  contactPage(){
-    this.navCtrl.push(ContactPage);
+  profilePage(){
+    this.navCtrl.push(ProfilePage);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PersonalDataPage');
+    console.log('ionViewDidLoad ContactPage');
   }
 
 }
