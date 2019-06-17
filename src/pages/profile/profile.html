@@ -11,29 +11,29 @@
 </ion-header>
 
 <ion-content padding>
-  <form>
+  <form [formGroup]="profileForm">
     <ion-list>
         <div>
           <ion-item>
               <ion-label floating>Email</ion-label>
-              <ion-input type="email"></ion-input>
+              <ion-input formControlName="email" type="email"></ion-input>
           </ion-item>
         </div>
         <div>
           <ion-item>
               <ion-label floating>Contraseña</ion-label>
-              <ion-input [type]="passwordType" clearOnEdit="false"></ion-input>
+              <ion-input formControlName="password" [type]="passwordType" clearOnEdit="false"></ion-input>
               <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
           </ion-item>
         </div>
         <div>
             <ion-item>
                 <ion-label floating>Confirmar Contraseña</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input formControlName="passwordConfirm" type="password"></ion-input>
             </ion-item>
           </div>
         <div class="customDiv" text-center>
-          <button ion-button round full color="secondary">Registrarse</button>
+          <button ion-button round full color="secondary" (click)="saveInfo()">Registrarse</button>
         </div>
       </ion-list>
   </form>

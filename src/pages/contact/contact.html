@@ -11,12 +11,12 @@
 </ion-header>
 
 <ion-content padding>
-  <form>
+  <form [formGroup]="contactForm">
     <ion-list>
         <div>
           <ion-item>
               <ion-label floating>País</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input formControlName="country" type="text"></ion-input>
           </ion-item>
         </div>
         <div>
@@ -25,13 +25,13 @@
               <ion-col col-4>
                 <ion-item>
                     <ion-label floating>Código</ion-label>
-                    <ion-input type="text"></ion-input>
+                    <ion-input formControlName="codeArea" type="number"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col col-8>
                 <ion-item>
                     <ion-label floating>Teléfono</ion-label>
-                    <ion-input type="text"></ion-input>
+                    <ion-input formControlName="telephone" type="number"></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -40,7 +40,7 @@
         <div>
             <ion-item>
                 <ion-label floating>Dirección</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input formControlName="address" type="text"></ion-input>
             </ion-item>
         </div>
         <div class="customDiv" text-center>

@@ -6,24 +6,24 @@
 </ion-header>
 
 <ion-content padding>
-  <form>
+  <form [formGroup]="personalDataForm">
     <ion-list>
         <div>
           <ion-item>
               <ion-label floating>Nombre</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input formControlName="name" type="text"></ion-input>
           </ion-item>
         </div>
         <div>
           <ion-item>
               <ion-label floating>Apellido</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input formControlName="surname" type="text"></ion-input>
           </ion-item>
         </div>
         <div class="customDiv">
           <ion-item>
               <ion-label>Sexo</ion-label>
-              <ion-select>
+              <ion-select formControlName="gender">
                 <ion-option value="35">Hombre</ion-option>
                 <ion-option value="36">Mujer</ion-option>
                 <ion-option value="37">Otros</ion-option>
@@ -33,7 +33,7 @@
         <div class="customDiv">
           <ion-item>
               <ion-label>Fecha de Nacimiento</ion-label>
-              <ion-datetime displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
+              <ion-datetime formControlName="birthDate" displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY" [max]="calculateYear()"></ion-datetime>
           </ion-item>
         </div>
         <div class="customDiv" text-center>

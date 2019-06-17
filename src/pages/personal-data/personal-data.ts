@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import {ContactPage} from '../contact/contact';
 
 /**
@@ -17,11 +19,44 @@ import {ContactPage} from '../contact/contact';
 })
 export class PersonalDataPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private Fname;
+  private Fsurname;
+  private Fgender;
+  private Fbirthdate;
+
+  public personalDataForm: FormGroup;
+
+  public submitAttempt: boolean = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+
+    this.personalDataForm = formBuilder.group({
+      name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      surname: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      gender: ['', Validators.required],
+      birthDate: ['', Validators.required]
+    });
+
+  }
+  
+  calculateYear(){
+    var y = new Date().getFullYear().toString();
+    var year = parseInt(y) - 18;
+    return year;
   }
 
   contactPage(){
-    this.navCtrl.push(ContactPage);
+    this.submitAttempt = true;
+
+    if(this.personalDataForm.valid){
+      this.navCtrl.push(ContactPage, 
+        {Fname : this.personalDataForm.value.name,
+        Fsurname: this.personalDataForm.value.surname,
+        Fgender: this.personalDataForm.value.gender,
+        Fbirthdate: this.personalDataForm.value.birthDate
+      });
+    } 
+
   }
 
   ionViewDidLoad() {
