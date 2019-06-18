@@ -14,12 +14,6 @@ export class HomePage {
 
   }
 
-  openModal(){
-    let modal = this.modalCtrl.create(ModalReferencePage, null,  {cssClass: "select-modal" });
-
-    modal.present();
-  }
-
   personalDataPage(){
     this.navCtrl.push(PersonalDataPage);
   }

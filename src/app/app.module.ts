@@ -10,6 +10,9 @@ import { PersonalDataPage } from '../pages/personal-data/personal-data';
 import { ContactPage } from '../pages/contact/contact';
 import { ProfilePage } from '../pages/profile/profile';
 import {ModalReferencePage} from '../pages/modal-reference/modal-reference';
+import { HttpProvider } from '../providers/http/http';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import {ModalReferencePage} from '../pages/modal-reference/modal-reference';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +40,8 @@ import {ModalReferencePage} from '../pages/modal-reference/modal-reference';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpProvider
   ]
 })
 export class AppModule {}
