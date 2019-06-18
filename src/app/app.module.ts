@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { PersonalDataPage } from '../pages/personal-data/personal-data';
 import { ContactPage } from '../pages/contact/contact';
 import { ProfilePage } from '../pages/profile/profile';
+import {ModalReferencePage} from '../pages/modal-reference/modal-reference';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     PersonalDataPage,
     ContactPage,
-    ProfilePage
+    ProfilePage,
+    ModalReferencePage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     PersonalDataPage,
     ContactPage,
-    ProfilePage
+    ProfilePage,
+    ModalReferencePage
   ],
   providers: [
     StatusBar,

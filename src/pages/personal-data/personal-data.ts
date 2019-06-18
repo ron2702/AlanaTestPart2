@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {ContactPage} from '../contact/contact';
+
+import {ModalReferencePage} from '../modal-reference/modal-reference';
 
 /**
  * Generated class for the PersonalDataPage page.
@@ -28,7 +30,7 @@ export class PersonalDataPage {
 
   public submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public modalCtrl: ModalController) {
 
     this.personalDataForm = formBuilder.group({
       name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -60,7 +62,9 @@ export class PersonalDataPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PersonalDataPage');
+    let modal = this.modalCtrl.create(ModalReferencePage, null,  {cssClass: "select-modal" });
+
+    modal.present();
   }
 
 }

@@ -71,8 +71,6 @@ export class ContactPage {
           Fbirthdate : this.birthdate
         });
     }
-    //this.navCtrl.push(ProfilePage);
-    //console.log(this.name, this.surname, this.gender, this.birthdate);
   }
 
   ionViewDidLoad() {
