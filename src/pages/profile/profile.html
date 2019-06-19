@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title class="customTitle">Tu Cuenta</ion-title>
+    <ion-title class="custom-title">Tu Cuenta</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
           <ion-item>
               <ion-label floating>Contraseña</ion-label>
               <ion-input formControlName="password" [type]="passwordType" clearOnEdit="false"></ion-input>
-              <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+              <ion-icon item-end [name]="passwordIcon" class="password-icon" (click)='hideShowPassword()'></ion-icon>
           </ion-item>
         </div>
         <div>
@@ -32,7 +32,7 @@
                 <ion-input formControlName="passwordConfirm" type="password"></ion-input>
             </ion-item>
           </div>
-        <div class="customDiv" text-center>
+        <div class="custom-div" text-center>
           <button ion-button round full color="secondary" (click)="saveInfo()">Registrarse</button>
         </div>
       </ion-list>

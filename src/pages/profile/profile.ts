@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -33,7 +33,8 @@ export class ProfilePage {
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
+     private alertCtrl : AlertController) {
 
     this.name = navParams.get('Fname');
     this.surname = navParams.get('Fsurname');
@@ -61,6 +62,18 @@ export class ProfilePage {
   saveInfo(){
     this.submitAttempt = true;
     if(this.profileForm.valid){
+
+      let alert = this.alertCtrl.create({
+        title: 'Informacion recibida',
+        subTitle: 'Nombre: ' + this.name + '\n' + 'Apellido: ' + this.surname + '\n' + 'Sexo: ' + this.gender
+                  + '\n' + 'Fecha de Nacimiento: ' + this.birthdate + '\n' + 'País: ' + this.country
+                  + '\n' + 'Código de Area y Teléfono: ' + this.codeArea + '-' + this.telephone
+                  + '\n' + 'Correo: ' + this.profileForm.value.email
+                  + '\n' + 'Contraseña: ' + this.profileForm.value.password, 
+        buttons: ['Cerrar']
+      });
+      alert.present();
+
       console.log(this.name, this.surname, this.gender, this.birthdate, this.country, this.codeArea, this.telephone, this.address,
         this.profileForm.value.email, this.profileForm.value.password, this.profileForm.value.passwordConfirm);
     }

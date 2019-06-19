@@ -1,29 +1,16 @@
 page-profile {
-    .customTitle{
+    .custom-title{
         padding: 0% 0% 0% 20%;
     }
 
-    .customDiv{
+    .custom-div{
         padding: 5% 0% 5% 0%;
     }
 
-    .divSameLine{
-        display: flex;
-        vertical-align: top;
-    }
-    
-    .divSameLineSeparator{
-        padding: 0% 0% 0% 0%;
-    }
-
-    .divSameLineSeparatorCodeArea{
-        padding: 0% 5% 0% 5%;
-    }
-
-    .passwordIcon{
-        font-size:2rem !important;
-        position: relative !important;
-        top: 22px !important;
-        margin: 0 auto !important;
+    .password-icon{
+        font-size:2rem;
+        position: relative;
+        top: 22px;
+        margin: 0 auto;
      }
 }

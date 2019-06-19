@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title class="customTitle">Tus Datos</ion-title>
+    <ion-title class="custom-title">Tus Datos</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,7 +20,7 @@
               <ion-input formControlName="surname" type="text"></ion-input>
           </ion-item>
         </div>
-        <div class="customDiv">
+        <div class="custom-div">
           <ion-item>
               <ion-label>Sexo</ion-label>
               <ion-select formControlName="gender">
@@ -30,13 +30,13 @@
               </ion-select>
             </ion-item>
         </div>
-        <div class="customDiv">
+        <div class="custom-div">
           <ion-item>
               <ion-label>Fecha de Nacimiento</ion-label>
               <ion-datetime formControlName="birthDate" displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY" [max]="calculateYear()"></ion-datetime>
           </ion-item>
         </div>
-        <div class="customDiv" text-center>
+        <div class="custom-div" text-center>
           <button ion-button round full color="secondary" (click)="contactPage()">Siguiente</button>
         </div>
       </ion-list>

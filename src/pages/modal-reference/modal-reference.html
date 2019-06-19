@@ -9,12 +9,12 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="customDivLogo" text-center>
+  <div class="custom-div-logo" text-center>
     <img src="../assets/imgs/ReferenceLogo.PNG">
   </div>
   <div>
-    <p class="customFirstParagraph">¿Tienes un <span class="customWord">código</span> referencial de un amigo #alaninja?</p>
-    <p class="customSecondParagraph"><span class="customText">(Comparte ese código)</span></p>
+    <p class="custom-first-paragraph">¿Tienes un <span class="custom-word">código</span> referencial de un amigo #alaninja?</p>
+    <p class="custom-second-paragraph"><span class="custom-text">(Comparte ese código)</span></p>
   </div>
   <form [formGroup]="referenceForm">
     <ion-list>
@@ -24,11 +24,11 @@
           <ion-input formControlName="code" type="text"></ion-input>
         </ion-item>
       </div>
-      <div class="customDiv" text-center>
-        <button ion-button round color="secondary" class="customBtn" (click) = "validateCode()">Enviar</button>
+      <div class="custom-div" text-center>
+        <button ion-button round color="secondary" class="custom-btn" (click) = "validateCode()">Enviar</button>
       </div>
       <div text-center>
-        <button ion-button round outline color="secondary" class="customBtn">No tengo un código</button>
+        <button ion-button round outline color="secondary" class="custom-btn" (click)="closeModal()">No tengo un código</button>
       </div>
     </ion-list>
   </form>
