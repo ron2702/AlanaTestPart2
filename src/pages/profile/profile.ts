@@ -73,9 +73,6 @@ export class ProfilePage {
         buttons: ['Cerrar']
       });
       alert.present();
-
-      console.log(this.name, this.surname, this.gender, this.birthdate, this.country, this.codeArea, this.telephone, this.address,
-        this.profileForm.value.email, this.profileForm.value.password, this.profileForm.value.passwordConfirm);
     }
   }
 
