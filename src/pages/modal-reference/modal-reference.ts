@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 
-import { PersonalDataPage } from '../personal-data/personal-data';
-
-import { Response } from '@angular/http';
-
 import "rxjs/add/operator/map";
 import "rxjs/Rx";
 

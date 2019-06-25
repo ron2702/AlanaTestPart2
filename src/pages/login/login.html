@@ -22,11 +22,11 @@
       <div>
         <ion-item>
             <ion-label floating>Contraseña</ion-label>
-            <ion-input formControlName="password" type="text" clearOnEdit="false" [(ngModel)]="loginPass"></ion-input>
+            <ion-input formControlName="password" type="password" [(ngModel)]="loginPass"></ion-input>
         </ion-item>
       </div>
       <div class="custom-div" text-center>
-        <button ion-button round full color="secondary" (click)="checkInfo()">Iniciar sesión</button>
+        <button ion-button round full color="secondary" (tap)="checkInfo()">Iniciar sesión</button>
       </div>
     </ion-list>
   </form>

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { HttpProvider } from '../../providers/http/http';
+import { DashboardPage } from '../dashboard/dashboard';
+
 
 @IonicPage()
 @Component({
@@ -18,36 +21,38 @@ export class LoginPage {
   public loginEmail: any;
   public loginPass: any;
 
-
-  /*Variables para el icono de mostrar password*/
-  private passwordType: string = 'password';
-  private passwordIcon: string = 'eye-off';
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
-              public httpProvider: HttpProvider) {
+              public httpProvider: HttpProvider, private alertCtrl : AlertController, private storage: Storage) {
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.email, Validators.required])],
       password: ['', Validators.compose([Validators.minLength(8), Validators.required])]
     });
   }
 
-  /*Metodo para mostrar u ocultar el password en el modulo de inicio de Sesion*/
-  hideShowPassword() {
-    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
-    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
-  }
-
   /*Metodo para enviar el email y password introducidos, esta peticion ira al provider http*/
   checkInfo(){
-    var confirm = this.httpProvider.checkLoginInfo(this.loginEmail, this.loginPass);
-    if (confirm){
-      console.log('Confirmado')
-    }
-    else{
-      console.log('No esta confirmado')
-    }
-  }
+    this.httpProvider.checkLoginInfo(this.loginEmail, this.loginPass);
 
+    var temp = this;
+
+    setTimeout(function(){
+
+      temp.storage.get('token').then((val) => {
+        if (val != null){
+          temp.navCtrl.push(DashboardPage);
+        }
+        else{
+          let alert = temp.alertCtrl.create({
+            title: 'Usuario incorrecto',
+            subTitle: 'Los datos suministrados no son correctos',
+            buttons: ['Cerrar']
+          });
+          alert.present();
+        }
+        });
+    }, 2000);
+  }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }

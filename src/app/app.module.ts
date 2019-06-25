@@ -18,6 +18,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { ProfilePage } from '../pages/profile/profile';
 import { ModalReferencePage } from '../pages/modal-reference/modal-reference';
 import { LoginPage } from '../pages/login/login';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { VacantPage } from '../pages/vacant/vacant';
 
 
 
@@ -30,7 +32,9 @@ import { LoginPage } from '../pages/login/login';
     ContactPage,
     ProfilePage,
     ModalReferencePage,
-    LoginPage
+    LoginPage,
+    DashboardPage,
+    VacantPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { LoginPage } from '../pages/login/login';
     ContactPage,
     ProfilePage,
     ModalReferencePage,
-    LoginPage
+    LoginPage,
+    DashboardPage,
+    VacantPage
   ],
   providers: [
     StatusBar,
