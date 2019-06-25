@@ -44,11 +44,9 @@ export class HttpProvider {
   }
 
   authToken = (): Promise<any> => {
-    console.log('token function')
     return new Promise<any>(res => {
       this.storage.get('token').then((val) => {
         this.token = val;
-        console.log(this.token);
         res(val);
       });
     });
@@ -56,41 +54,77 @@ export class HttpProvider {
 
   getCompanyInfo(){
 
-    this._limit = 1;
-    this._offset = 10;
-
     this.authToken().then(res => {
 
+      var url = 'https://apidev.alanajobs.com/secure-candidate/publication/company-index';
 
-      /*let  _params = new HttpParams({
+      let  _params = new HttpParams({
         fromObject : {
           'offset' : '1',
           'limit' : '5',
           'apply' : '0'
         }
-      })*/
+      })
 
-      /*let _params2 = {
-        'offset': 5,
-        'limit': 1,
-        'apply': 0};*/
+      let _options = {
+        params: _params,
+        headers: new HttpHeaders({
+            'Authorization': 'Bearer ' + this.token
+        })
+      };
+
+        this.http.get(url, _options)
+        .map(res => res )
+        .subscribe( data => {
+        console.log(data)
+        })
+    });
+  }
+
+
+  /*Metodo para obtener las vacantes de una empresa en especifico */
+  getVacant(){
+    this.authToken().then(res => {
+
+      var url = 'https://apidev.alanajobs.com/secure-candidate/publication/index';
+
+      let  _params = new HttpParams({
+        fromObject : {
+          'offset' : '1',
+          'limit' : '5',
+          'apply' : '0'
+        }
+      })
+
+      let _options = {
+        params: _params,
+        headers: new HttpHeaders({
+            'Authorization': 'Bearer ' + this.token,
+            'company': '54'
+        })
+      };
+
+        this.http.get(url, _options)
+        .map(res => res )
+        .subscribe( data => {
+        console.log(data)
+        })
+    });
+  }
+
+  /*Metodo para obtener los datos del usuario - FALTA TRABAJARLO*/
+  getUserInfo(){
+    this.authToken().then(res => {
 
         let httpOptions = {
-        HttpParams: new HttpParams({
-          fromObject : {
-            'offset' : '1',
-            'limit' : '5',
-            'apply' : '0'
-          }
-        }),
-        headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + this.token
-        }),
+          headers: new HttpHeaders({
+              'Authorization': 'Bearer ' + this.token
+              })
         };
 
-        var url = 'https://apidev.alanajobs.com/secure-candidate/publication/company-index';
+        var url = 'https://apidev.alanajobs.com/secure-candidate/candidate/show';
 
-        this.http.get(url,httpOptions)
+        this.http.get(url, httpOptions)
         .map(res => res )
         .subscribe( data => {
         console.log(data)
