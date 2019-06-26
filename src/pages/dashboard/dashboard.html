@@ -1,6 +1,21 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Dashboard</ion-title>
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle start>
+      <ion-icon name="ios-menu-outline"></ion-icon>
+  </button>
+
+  <ion-title>Dashboard</ion-title>
+
+  <ion-buttons end>
+      <button ion-button icon-only (tap)="userProfile()">
+          <ion-icon name="contact"></ion-icon>
+      </button>
+  </ion-buttons>
+  <ion-buttons end>
+      <button ion-button icon-only (tap)="logOut()">
+          <ion-icon name="log-out"></ion-icon>
+      </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -15,11 +30,19 @@
               <h3>{{ subdata.company.name }}</h3>
             </div>
             <div text-center>
-              <h3>Vacantes: {{ subdata.publicationCount - 1 }}</h3>
-              <h4>Distancia: {{ subdata.maxDistance | number : '1.2-2' }}</h4>
+              <h3>
+                <ion-icon start name="briefcase"></ion-icon>
+                Vacantes: {{ subdata.publicationCount }}
+              </h3>
+              <h4>
+                <ion-icon start name="pin"></ion-icon>
+                Distancia: {{ subdata.maxDistance | number : '1.2-2' }}</h4>
             </div>
-          <button ion-button clear item-end (tap)="goTo(subdata.company.id)">View</button>
+          <button ion-button clear item-end icon-only (tap)="goTo(subdata.company.id)">
+                <ion-icon color="secondary" name="arrow-forward"></ion-icon>
+          </button>
         </ion-item>
     </ion-card>
   </ion-list>
 </ion-content>
+

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 
+
 /*Paginas*/
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -20,6 +21,7 @@ import { ModalReferencePage } from '../pages/modal-reference/modal-reference';
 import { LoginPage } from '../pages/login/login';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { VacantPage } from '../pages/vacant/vacant';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 
 
 
@@ -34,7 +36,8 @@ import { VacantPage } from '../pages/vacant/vacant';
     ModalReferencePage,
     LoginPage,
     DashboardPage,
-    VacantPage
+    VacantPage,
+    UserProfilePage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { VacantPage } from '../pages/vacant/vacant';
     ModalReferencePage,
     LoginPage,
     DashboardPage,
-    VacantPage
+    VacantPage,
+    UserProfilePage
   ],
   providers: [
     StatusBar,

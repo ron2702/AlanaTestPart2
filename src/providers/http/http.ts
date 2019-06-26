@@ -14,10 +14,21 @@ export class HttpProvider {
   public _id: string;
 
   constructor(public http: HttpClient, private storage: Storage) {
-    console.log('Hello HttpProvider Provider');
+    
   }
 
-  /*Metodo para checkear el usuario y obtener el token*/
+  /*
+    * Método para checkear el usuario y obtener un token, una vez obtenido se procede a almacenarlo 
+    * con IonicStorage
+    * 
+    * @ejemplo
+    * 
+    * checkLoginInfo(emailNotConfirmed, passwordNotConfirmed)
+    * 
+    * @param {any} emailNotConfirmed: Correo del usuario
+    * @param {any} passwordNotConfirmed: Password del usuario
+    * @returns 
+*/
   checkLoginInfo(emailNotConfirmed:any, passwordNotConfirmed: any) {
   
     let body = 'email=' + emailNotConfirmed + '&password=' + passwordNotConfirmed;
@@ -53,7 +64,14 @@ export class HttpProvider {
     });
   }
 
-  /*Metodo para obtener la informacion de las companias */
+/*
+  * Método para obtener la información de las compañías
+  * 
+  * @ejemplo
+  * 
+  * getCompanyInfo()
+  * @returns promise
+*/
   getCompanyInfo(){
 
     return this.authToken().then(res => {
@@ -62,8 +80,8 @@ export class HttpProvider {
 
       let  _params = new HttpParams({
         fromObject : {
-          'offset' : '1',
-          'limit' : '5',
+          'offset' : '0',
+          'limit' : '10',
           'apply' : '0'
         }
       })
@@ -86,8 +104,14 @@ export class HttpProvider {
     });
   }
 
-
-  /*Metodo para obtener las vacantes de una empresa en especifico */
+/*
+  * Método para obtener las vacantes de una empresa en específico 
+  * 
+  * @ejemplo
+  * 
+  * getVacant()
+  * @returns promise
+*/
   getVacant(companyID: string){
     return this.authToken().then(res => {
 
@@ -97,7 +121,7 @@ export class HttpProvider {
 
       let  _params = new HttpParams({
         fromObject : {
-          'offset' : '1',
+          'offset' : '0',
           'limit' : '10',
           'apply' : '0'
         }
@@ -122,9 +146,16 @@ export class HttpProvider {
     });
   }
 
-  /*Metodo para obtener los datos del usuario - FALTA TRABAJARLO*/
+/*
+  * Método para obtener los datos del usuario
+  * 
+  * @ejemplo
+  * 
+  * getVacant()
+  * @returns promise
+*/
   getUserInfo(){
-    this.authToken().then(res => {
+    return this.authToken().then(res => {
 
         let httpOptions = {
           headers: new HttpHeaders({
@@ -134,10 +165,13 @@ export class HttpProvider {
 
         var url = 'https://apidev.alanajobs.com/secure-candidate/candidate/show';
 
-        this.http.get(url, httpOptions)
-        .map(res => res )
-        .subscribe( data => {
-        console.log(data)
+        return new Promise ((resolve, reject ) => {
+          this.http.get(url, httpOptions)
+            .map(res => res )
+            .subscribe( data => {
+              resolve(data)
+          
+          })
         })
     });
   }

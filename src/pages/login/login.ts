@@ -21,6 +21,8 @@ export class LoginPage {
   public loginEmail: any;
   public loginPass: any;
 
+  public submitAttempt: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
               public httpProvider: HttpProvider, private alertCtrl : AlertController, private storage: Storage) {
     this.loginForm = formBuilder.group({
@@ -31,30 +33,31 @@ export class LoginPage {
 
   /*Metodo para enviar el email y password introducidos, esta peticion ira al provider http*/
   checkInfo(){
-    this.httpProvider.checkLoginInfo(this.loginEmail, this.loginPass);
 
-    var temp = this;
+      this.httpProvider.checkLoginInfo(this.loginEmail, this.loginPass);
 
-    setTimeout(function(){
+      var temp = this;
 
-      temp.storage.get('token').then((val) => {
-        if (val != null){
-          temp.navCtrl.push(DashboardPage);
-        }
-        else{
-          let alert = temp.alertCtrl.create({
-            title: 'Usuario incorrecto',
-            subTitle: 'Los datos suministrados no son correctos',
-            buttons: ['Cerrar']
+      setTimeout(function(){
+
+        temp.storage.get('token').then((val) => {
+          if (val != null){
+            temp.navCtrl.push(DashboardPage);
+          }
+          else{
+            let alert = temp.alertCtrl.create({
+              title: 'Usuario incorrecto',
+              subTitle: 'Los datos suministrados no son correctos',
+              buttons: ['Cerrar']
+            });
+            alert.present();
+          }
           });
-          alert.present();
-        }
-        });
-    }, 2000);
+      }, 1600);
   }
   
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    
   }
 
 }

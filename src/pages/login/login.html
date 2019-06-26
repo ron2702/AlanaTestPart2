@@ -26,7 +26,7 @@
         </ion-item>
       </div>
       <div class="custom-div" text-center>
-        <button ion-button round full color="secondary" (tap)="checkInfo()">Iniciar sesión</button>
+        <button ion-button [disabled]="!loginForm.valid" round full color="secondary" (tap)="checkInfo()">Iniciar sesión</button>
       </div>
     </ion-list>
   </form>

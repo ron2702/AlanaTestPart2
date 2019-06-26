@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { HttpProvider } from '../../providers/http/http';
 
 import { VacantPage } from '../vacant/vacant';
+import { UserProfilePage } from '../user-profile/user-profile';
 
-/**
- * Generated class for the DashboardPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -32,18 +28,21 @@ export class DashboardPage {
     this.navCtrl.push(VacantPage, { idTest: idTest });
   }
 
-  ionViewDidLoad() {
+  userProfile(){
+    this.navCtrl.push(UserProfilePage);
+  }
 
-    var temp = this;
+  logOut(){
+    this.storage.remove('token');
+    this.navCtrl.pop();
+  }
+
+  ionViewDidLoad() {
 
     this.httpProvider.getCompanyInfo().then( data => {
       this.companyInfos.push(data);
-      console.log(data)
     });
     
-    setTimeout(function(){
-      console.log(temp.companyInfos)
-    },2000 )
   }
 
 }

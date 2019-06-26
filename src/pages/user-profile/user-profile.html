@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Perfil del usuario</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngFor="let subinfo of userInfo">
+    <ion-card>
+        <div class="custom-padding">
+            <img class="center" src="{{subinfo.response.profilePicture}}"/>
+        </div>
+        <ion-card-content>
+          <ion-card-title text-center>
+              {{subinfo.response.name }} {{ subinfo.response.lastName }}
+          </ion-card-title>
+          <p>
+            Género: {{subinfo.response.gender}}
+          </p>
+          <p>
+            Email: {{subinfo.response.email}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+  </ion-list>
+</ion-content>

@@ -30,16 +30,9 @@ export class VacantPage {
 
   ionViewDidLoad() {
 
-    var temp = this;
-
     this.httpProvider.getVacant(this.idTest).then( data => {
       this.vacantInfo.push(data);
     });
-
-    setTimeout(function(){
-      console.log(temp.vacantInfo)
-    },2000 )
-
   }
 
 }
