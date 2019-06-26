@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, PipeTransform, Pipe } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
@@ -18,10 +18,14 @@ import { VacantPage } from '../vacant/vacant';
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
 })
+
 export class DashboardPage {
+
+  public companyInfos: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
     public httpProvider: HttpProvider) {
+      this.companyInfos = [];
   }
 
   goTo(idTest){
@@ -29,7 +33,17 @@ export class DashboardPage {
   }
 
   ionViewDidLoad() {
-    this.httpProvider.getCompanyInfo();
+
+    var temp = this;
+
+    this.httpProvider.getCompanyInfo().then( data => {
+      this.companyInfos.push(data);
+      console.log(data)
+    });
+    
+    setTimeout(function(){
+      console.log(temp.companyInfos)
+    },2000 )
   }
 
 }

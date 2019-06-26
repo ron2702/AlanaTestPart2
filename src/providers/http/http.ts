@@ -52,9 +52,10 @@ export class HttpProvider {
     });
   }
 
+  /*Metodo para obtener la informacion de las companias */
   getCompanyInfo(){
 
-    this.authToken().then(res => {
+    return this.authToken().then(res => {
 
       var url = 'https://apidev.alanajobs.com/secure-candidate/publication/company-index';
 
@@ -73,11 +74,14 @@ export class HttpProvider {
         })
       };
 
+      return new Promise((resolve, reject) =>{
         this.http.get(url, _options)
         .map(res => res )
-        .subscribe( data => {
-        console.log(data)
+        .subscribe( (data) => {
+          resolve(data);
+          
         })
+      })
     });
   }
 
