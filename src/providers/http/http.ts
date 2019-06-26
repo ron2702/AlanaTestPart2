@@ -11,6 +11,7 @@ export class HttpProvider {
   public token:string;
   public _limit:number;
   public _offset:number;
+  public _id: string;
 
   constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello HttpProvider Provider');
@@ -87,15 +88,17 @@ export class HttpProvider {
 
 
   /*Metodo para obtener las vacantes de una empresa en especifico */
-  getVacant(){
-    this.authToken().then(res => {
+  getVacant(companyID: string){
+    return this.authToken().then(res => {
+
+      this._id = companyID;
 
       var url = 'https://apidev.alanajobs.com/secure-candidate/publication/index';
 
       let  _params = new HttpParams({
         fromObject : {
           'offset' : '1',
-          'limit' : '5',
+          'limit' : '10',
           'apply' : '0'
         }
       })
@@ -104,15 +107,18 @@ export class HttpProvider {
         params: _params,
         headers: new HttpHeaders({
             'Authorization': 'Bearer ' + this.token,
-            'company': '54'
+            'company': this._id.toString()
         })
       };
 
+      return new Promise ((resolve, reject) => {
         this.http.get(url, _options)
         .map(res => res )
         .subscribe( data => {
-        console.log(data)
+          resolve(data);
+
         })
+      })
     });
   }
 

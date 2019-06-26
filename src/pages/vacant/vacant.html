@@ -1,29 +1,23 @@
-<!--
-  Generated template for the VacantPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>vacant</ion-title>
+    <ion-title>Vacant</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-      <ion-card>
+  <ion-list *ngFor="let data of vacantInfo">
+      <ion-card *ngFor="let subdata of data.response">
         <ion-item>
             <ion-thumbnail item-start>
-              <img src="../assets/imgs/avatar.jpg">
+              <img src="{{ subdata.publication.jobPosition.icon }}">
             </ion-thumbnail>
+            <div class="custom-padding-fortext" text-center>
+              <h2>{{ subdata.publication.jobPosition.jobPositionName }}</h2>
+            </div>
             <div text-center>
-              <h1>Cher</h1>
+              <h3>{{ subdata.publication.title }}</h3>
+              <h4>Distancia: {{ subdata.distance }}</h4>
             </div>
-            <div>
-              <p>Ugh. As if.</p>
-            </div>
-            <button ion-button clear item-end (tap)="goTo()">View</button>
           </ion-item>
       </ion-card>
     </ion-list>

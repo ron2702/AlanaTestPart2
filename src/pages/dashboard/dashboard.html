@@ -12,10 +12,10 @@
             <img src="{{ subdata.company.logo }}">
           </ion-thumbnail>
           <div class="custom-padding-fortext" text-center>
-              <h2>{{ subdata.company.name }}</h2>
+              <h3>{{ subdata.company.name }}</h3>
             </div>
             <div text-center>
-              <h3>Vacantes: {{ subdata.publicationCount }}</h3>
+              <h3>Vacantes: {{ subdata.publicationCount - 1 }}</h3>
               <h4>Distancia: {{ subdata.maxDistance | number : '1.2-2' }}</h4>
             </div>
           <button ion-button clear item-end (tap)="goTo(subdata.company.id)">View</button>

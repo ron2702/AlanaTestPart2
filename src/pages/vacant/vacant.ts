@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { HttpProvider } from '../../providers/http/http';
+import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the VacantPage page.
  *
@@ -15,15 +18,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class VacantPage {
 
-  public idTest: number;
+  public vacantInfo: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public idTest: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
+    public httpProvider: HttpProvider) {
+    this.vacantInfo = [];
     this.idTest = this.navParams.get('idTest');
-    console.log(this.idTest);
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad VacantPage');
+
+    var temp = this;
+
+    this.httpProvider.getVacant(this.idTest).then( data => {
+      this.vacantInfo.push(data);
+    });
+
+    setTimeout(function(){
+      console.log(temp.vacantInfo)
+    },2000 )
+
   }
 
 }
