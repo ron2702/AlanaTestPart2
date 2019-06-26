@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { HttpProvider } from '../../providers/http/http';
-import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the VacantPage page.
@@ -22,7 +21,7 @@ export class VacantPage {
 
   public idTest: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     public httpProvider: HttpProvider) {
     this.vacantInfo = [];
     this.idTest = this.navParams.get('idTest');

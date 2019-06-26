@@ -15,8 +15,12 @@
               <h2>{{ subdata.publication.jobPosition.jobPositionName }}</h2>
             </div>
             <div text-center>
-              <h3>{{ subdata.publication.title }}</h3>
-              <h4>Distancia: {{ subdata.distance }}</h4>
+              <h3>
+                <ion-icon start name="document"></ion-icon>
+                {{ subdata.publication.title }}</h3>
+              <h4>
+                <ion-icon start name="pin"></ion-icon>
+                Distancia: {{ subdata.distance }}</h4>
             </div>
           </ion-item>
       </ion-card>
